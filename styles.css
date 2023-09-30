@@ -1,0 +1,25 @@
+.footer-section-container {
+    display: flex;
+    flex-direction: row;
+}
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.footer-section a {
+    text-decoration: none;
+}
+.footer-section-title {
+    color: rgb(50,50,50);
+    font-size: 15pt;
+    margin-bottom: 10px;
+}
+.footer-section-link {
+    color: rgb(100,100,100);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
