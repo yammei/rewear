@@ -1,0 +1,410 @@
+<head>
+    <style>
+        content {
+            display: flex;
+            flex-direction: column;
+            width: 1000px;
+            align-items: center;
+            background-color: rgb(250,250,250);
+        }
+        #ad-banner-section {
+            height: 400px;
+            width: 1000px;
+            border-radius: 10px;
+            background-color: lightgray;
+        }
+        #clothing-category-section {
+            height: fit-content;
+            width: 1000px;
+            border-radius: 10px;
+            /* background-color: lightgray; */
+        }
+        #category-list {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            width: auto;
+            margin: 0px auto;
+        }
+        .category-element {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: fit-content;
+            width: 200px;
+            margin-top: 50px;
+        }
+        .category-element-image-container {
+            height: 150px;
+            width: 150px;
+            border-radius: 100%;
+        }
+        .category-element-image {
+            height: inherit;
+            width: inherit;
+            border-radius: 100%;
+            background-color: red;
+        }
+        .category-element-name {
+            font-weight: 700;
+            text-align: center;
+            height: fit-content;
+            width: fit-content;
+            margin-top: 20px;
+        }
+        .category-element-description {
+            font-size: 10pt;
+            text-align: center;
+            height: fit-content;
+            width: fit-content;
+            margin-top: -15px;
+            max-width: 120px;
+        }
+        #recommended-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 800px;
+            width: fit-content;
+            border-radius: 10px;
+            /* background-color: lightgray; */
+        }
+        #recommended-filters {
+            height: 90%;
+            width: 175px;
+            margin: auto;
+            border-radius: 10px;
+            /* background-color: grey; */
+        }
+        .filter-element {
+            height: fit-content;
+            width: 150px;
+            margin: 0px auto;
+            margin-bottom: -50px;
+            padding: 10px;
+            /* background-color: lightblue; */
+        }
+        .filter-element-title {
+            font-size: 10pt;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+        .toggle-pair {
+            display: flex;
+            flex-direction: row;
+        }
+        .toggle-pair input {
+            height: 15px;
+            width: 15px;
+            margin: auto 2px;
+        }
+        .toggle-pair label {
+            font-size: 10pt;
+            margin: auto 2px;
+        }
+        #color-filter-1,
+        #color-filter-2 {
+            display: flex;
+            flex-direction: row;
+        }
+        #color-filter-1 input, 
+        #color-filter-2 input {
+            margin: 2px 2px;
+        }
+        #color-filter-1 input:checked, 
+        #color-filter-2 input:checked {
+            border-color: gold;
+        }
+        #recommended-items {
+            height: fit-content;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
+            border-radius: 10px;
+            /* background-color: lightgrey; */
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+        .item-element {
+            height: fit-content;
+            width: 200px;
+            margin: 0px 10px;
+            padding-bottom: 20px;
+            /* background-color: grey; */
+            border-width: 1px;
+            border-style: solid;
+            border-color: lightgrey;
+        }
+        .item-element-image-container {
+            height: 250px;
+            width: inherit;
+        }
+        .item-element-image {
+            height: inherit;
+            width: inherit;
+            background-color: red;
+        }
+        .item-element p {
+            height: fit-content;
+            width: 90%;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .item-name,
+        .item-description,
+        .item-price {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .item-name {
+            font-size: 12pt;
+            font-weight: 700;
+        }
+        .item-description {
+            font-size: 10pt;
+        }
+        footer {
+            width: fit-content;
+            /* background-color: lightgray; */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-section-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            width: 200px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .footer-section a {
+            text-decoration: none;
+        }
+        .footer-section-title {
+            color: rgb(50,50,50);
+            font-size: 15pt;
+            margin-bottom: -10px;
+        }
+        .footer-section-link {
+            color: rgb(100,100,100);
+            font-size: 10pt;
+            margin-top: -10px;
+            margin-bottom: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <content>
+
+        <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Ad Banner Section</p>
+        <div id="ad-banner-section">
+        </div>
+
+        <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Clothing Category Section</p>
+        <div id="clothing-category-section">
+            <div id="category-list">
+                <div class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
+                        <div class="category-element-image"></div>
+                    </a>                    
+                    <p class="category-element-name">T-Shirts</p>
+                    <p class="category-element-description">Crop Tops, Camis, V-Necks</p>
+                </div>
+                <div class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
+                        <div class="category-element-image"></div>
+                    </a> 
+                    <p class="category-element-name">Pants</p>
+                    <p class="category-element-description">Straigth, Baggy, Flared</p>
+                </div>
+                <div class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
+                        <div class="category-element-image"></div>
+                    </a>                    
+                    <p class="category-element-name">Footwear</p>
+                    <p class="category-element-description">Shoes, Boots, Heels</p>
+                </div>
+                <div class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
+                        <div class="category-element-image"></div>
+                    </a>                    
+                    <p class="category-element-name">Undergarments</p>
+                    <p class="category-element-description">Pajamas, Socks, Underwear</p>
+                </div>
+                <div class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
+                        <div class="category-element-image"></div>
+                    </a>                    
+                    <p class="category-element-name">Accessories</p>
+                    <p class="category-element-description">Jewelry, Watches, Glasses</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="width: fit-content; margin: 50px auto; font-size: 25pt;font-weight: 700;">Recommended Section</p>
+        <div id="recommended-section">
+
+            <div id="recommended-filters">
+                
+                <div class="filter-element">
+                    <p class="filter-element-title">Filter by Size</p>
+                    <div class="toggle-pair">
+                        <input type="radio" name="size-xs" value="size">
+                        <label for="size-xs">(XS) Extra Small</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="size-s" value="size">
+                        <label for="size-s">(S) Small</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="size-m" value="size">
+                        <label for="size-m">(M) Medium</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="size-l" value="size">
+                        <label for="size-l">(L) Large</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="size-xl" value="size">
+                        <label for="size-xl">(XL) Extra Large</label><br>
+                    </div>
+                </div> <!-- filter by size -->
+
+                <div class="filter-element">
+                    <p class="filter-element-title">Filter by Color</p>
+                    <div id="color-filter-1">
+                        <input type="checkbox" name="red" style="background-color: red;" value="color">
+                        <input type="checkbox" name="blue" style="background-color: blue;" value="color">
+                        <input type="checkbox" name="yellow" style="background-color: yellow;" value="color">
+                        <input type="checkbox" name="green" style="background-color: green;" value="color">
+                        <input type="checkbox" name="purple" style="background-color: purple;" value="color">
+                        <input type="checkbox" name="orange" style="background-color: orange;" value="color">
+                    </div>
+                    <div id="color-filter-2">
+                        <input type="checkbox" name="black" style="background-color: black;" value="color">
+                        <input type="checkbox" name="dark-grey" style="background-color: darkgrey;" value="color">
+                        <input type="checkbox" name="light-grey" style="background-color: lightgrey;" value="color">
+                        <input type="checkbox" name="white" style="background-color: white;" value="color">
+                        <input type="checkbox" name="brown" style="background-color: brown;" value="color">
+                        <input type="checkbox" name="beige" style="background-color: beige;" value="color">
+                    </div>
+                </div> <!-- filter by color -->
+                
+                <div class="filter-element">
+                    <p class="filter-element-title">Filter by Price</p>
+                    <div class="toggle-pair">
+                        <input type="radio" name="price-option-1" value="size">
+                        <label for="price-option-1">$2.99 - $4.99</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="price-option-2" value="size">
+                        <label for="price-option-2">$4.99 - $6.99</label><br>
+                    </div>
+                    <div class="toggle-pair">
+                        <input type="radio" name="price-option-3" value="size">
+                        <label for="price-option-3">$6.99 - $8.99</label><br>
+                    </div>
+                </div> <!-- filter by price -->
+
+            </div> <!-- filters -->
+
+            <div id="recommended-items">
+                <div id="column-of-rows">
+                    <div class="row">
+                        <div class="item-element">
+                            <a class="item-element-image-container" href="" target="_blank">
+                                <div class="item-element-image"></div>
+                            </a>
+                            <p class="item-name">
+                                Item Name
+                            </p>
+                            <p class="item-description">
+                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
+                            </p>
+                            <p class="item-price">$00.00</p>
+                        </div>  <!-- item element -->
+                        <div class="item-element">
+                            <a class="item-element-image-container" href="" target="_blank">
+                                <div class="item-element-image"></div>
+                            </a>
+                            <p class="item-name">
+                                Item Name
+                            </p>
+                            <p class="item-description">
+                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
+                            </p>
+                            <p class="item-price">$00.00</p>
+                        </div>  <!-- item element -->                        
+                        <div class="item-element">
+                            <a class="item-element-image-container" href="" target="_blank">
+                                <div class="item-element-image"></div>
+                            </a>
+                            <p class="item-name">
+                                Item Name
+                            </p>
+                            <p class="item-description">
+                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
+                            </p>
+                            <p class="item-price">$00.00</p>
+                        </div>  <!-- item element -->                        
+                        <div class="item-element">
+                            <a class="item-element-image-container" href="" target="_blank">
+                                <div class="item-element-image"></div>
+                            </a>
+                            <p class="item-name">
+                                Item Name
+                            </p>
+                            <p class="item-description">
+                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
+                            </p>
+                            <p class="item-price">$00.00</p>
+                        </div>  <!-- item element -->
+                    </div>  <!-- row 1 -->
+                </div>   <!-- column of rows -->
+            </div>  <!-- items -->
+
+        </div> <!-- recommended section -->
+
+        <p style="position: relative; display: inline-block; font-size: 10pt; max-width: 600px; height: fit-content; width: fit-content; margin-top: -200px; left: 25%; padding: 20px; border-width: 1px; border-color: rgb(100, 100, 100);">
+            <span style="font-size: 12pt;">Developer Notes</span>
+            <b>1.</b> JavaScript logic for pop-out menu when menu icon in top-left is clicked.
+            <b>2.</b> Figure out how to post new items from admin page. Use custom product card.
+            <b>3.</b> Look into enabling untoggling for filter inputs.
+            <b>4.</b> Add page number feature below recommended products. 5 pages visible, 2 forward and 2 back.
+            <b>5.</b> Slideshow for ad banner. Allow user to drag/navigate between banners.
+        </p>
+
+    </content>
+</body>
+<footer>
+    <div class="footer-section-container">
+        <div class="footer-section" id="footer-section1">
+            <a class="footer-section-title">Shopping Information </a>
+            <a class="footer-section-link" href="">Help</a>
+            <a class="footer-section-link" href="">Track Order</a>
+            <a class="footer-section-link" href="">Return Policy</a>
+        </div>
+        <div class="footer-section" id="footer-section2">
+            <a class="footer-section-title">About Re.Wear</a>
+            <a class="footer-section-link" href="">About Us</a>
+            <a class="footer-section-link" href="">Store Locations</a>
+        </div>
+        <div class="footer-section" id="footer-section3">
+            <a class="footer-section-title">Socials & Contacts</a>
+            <a class="footer-section-link" href="" target="_blank">Instagram</a>
+            <a class="footer-section-link" href="" target="_blank">Twitter</a>
+            <a class="footer-section-link" href="" target="_blank">Facebook</a>
+            <a class="footer-section-link" href="">Contact Us</a>
+        </div>
+    </div>
+</footer>
