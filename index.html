@@ -7,6 +7,16 @@
             align-items: center;
             background-color: rgb(250,250,250);
         }
+        /* #background-image {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            scale: 2;
+            background-color: rgb(214, 209, 205);
+            z-index: -1;
+        } */
         #ad-banner-section {
             height: 400px;
             width: 1000px;
@@ -189,6 +199,9 @@
         .footer-section a {
             text-decoration: none;
         }
+        .footer-section-link:hover {
+            color: rgb(20, 20, 20);
+        }
         .footer-section-title {
             color: rgb(50,50,50);
             font-size: 15pt;
@@ -205,6 +218,12 @@
 
 <body>
     <content>
+
+        <!-- <div id="background-image">
+
+        </div> -->
+
+        <!-- <button onclick="insertProductData()">Click me</button> -->
 
         <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Ad Banner Section</p>
         <div id="ad-banner-section">
@@ -283,20 +302,20 @@
                 <div class="filter-element">
                     <p class="filter-element-title">Filter by Color</p>
                     <div id="color-filter-1">
-                        <input type="checkbox" name="red" style="background-color: red;" value="color">
-                        <input type="checkbox" name="blue" style="background-color: blue;" value="color">
-                        <input type="checkbox" name="yellow" style="background-color: yellow;" value="color">
-                        <input type="checkbox" name="green" style="background-color: green;" value="color">
-                        <input type="checkbox" name="purple" style="background-color: purple;" value="color">
-                        <input type="checkbox" name="orange" style="background-color: orange;" value="color">
+                        <input type="checkbox" name="red" style="background-color: red;" value="color" title="Red">
+                        <input type="checkbox" name="blue" style="background-color: blue;" value="color" title="Blue">
+                        <input type="checkbox" name="yellow" style="background-color: yellow;" value="color" title="Yellow">
+                        <input type="checkbox" name="green" style="background-color: green;" value="color" title="Green">
+                        <input type="checkbox" name="purple" style="background-color: purple;" value="color" title="Purple">
+                        <input type="checkbox" name="orange" style="background-color: orange;" value="color" title="Orange">
                     </div>
                     <div id="color-filter-2">
-                        <input type="checkbox" name="black" style="background-color: black;" value="color">
-                        <input type="checkbox" name="dark-grey" style="background-color: darkgrey;" value="color">
-                        <input type="checkbox" name="light-grey" style="background-color: lightgrey;" value="color">
-                        <input type="checkbox" name="white" style="background-color: white;" value="color">
-                        <input type="checkbox" name="brown" style="background-color: brown;" value="color">
-                        <input type="checkbox" name="beige" style="background-color: beige;" value="color">
+                        <input type="checkbox" name="black" style="background-color: black;" value="color" title="Black">
+                        <input type="checkbox" name="dark-grey" style="background-color: darkgrey;" value="color" title="Dark Grey">
+                        <input type="checkbox" name="light-grey" style="background-color: lightgrey;" value="color" title="Light Grey">
+                        <input type="checkbox" name="white" style="background-color: white;" value="color" title="White">
+                        <input type="checkbox" name="brown" style="background-color: brown;" value="color" title="Brown">
+                        <input type="checkbox" name="beige" style="background-color: beige;" value="color" title="Beige">
                     </div>
                 </div> <!-- filter by color -->
                 
@@ -401,10 +420,48 @@
         </div>
         <div class="footer-section" id="footer-section3">
             <a class="footer-section-title">Socials & Contacts</a>
-            <a class="footer-section-link" href="" target="_blank">Instagram</a>
-            <a class="footer-section-link" href="" target="_blank">Twitter</a>
-            <a class="footer-section-link" href="" target="_blank">Facebook</a>
+            <a class="footer-section-link" href="https://www.instagram.com/rewear_company/" target="_blank">Instagram</a>
+            <a class="footer-section-link" href="https://twitter.com/rewear_company" target="_blank">Twitter</a>
+            <a class="footer-section-link" href="https://www.tiktok.com/@rewear_company" target="_blank">TikTok</a>
             <a class="footer-section-link" href="">Contact Us</a>
         </div>
     </div>
 </footer>
+<script>
+    function insertProductData()  {
+
+        // Create data object
+        const data = {
+        productID,
+        productName: 'White T-Shirt',
+        productDescription: 'A plain white tee.',
+        productPrice: parseFloat(8.99),
+        productType: 'Shirt',
+        productDate: '05-05-2023',
+        productStock: parseInt(1)
+        };
+
+        // Send HTTP POST request to server
+        try {
+        const response = await fetch('http://73.235.191.83:8080/insert', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        // Handle response
+        if (response.ok) {
+            // Success
+            alert('Form submitted successfully');
+        } else {
+            // Error
+            alert('Error submitting form');
+        }
+        } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the form');
+        }
+    }
+</script>
