@@ -1,3 +1,475 @@
+<head>
+    <style>
+        h2 {
+            display: none;
+        }
+        #profile-content {
+            display: flex;
+            flex-direction: row ;
+            width: fit-content;
+            margin-top: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: fit-content;
+            width: 250px;
+            margin-left: auto;
+            margin-bottom: 20px;
+        }
+        #profile-greeting {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: fit-content;
+            width: inherit;
+            margin-bottom: 20px;
+            padding: 20px 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #profile-image {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            width: 100px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgb(50, 50, 50);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        #profile-image svg {
+            height: 50px;
+            width: auto;
+            fill: white;
+            margin: auto;
+            object-fit: cover;
+        }
+        #profile-info {
+            font-size: 36pt;
+            text-align: center;
+            height: 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #profile-options {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: inherit;
+            padding: 20px 20px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .profile-option-link {
+            display: inline-block;
+            font-size: 12pt;
+            text-decoration: none;
+            color: rgb(50, 50, 50);
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .profile-option-link-container {
+            height: fit-content;
+            width: fit-content;
+            margin: 5px;
+            padding: 10px 10px;
+            border: none;
+            border-width: 1px;
+            border-color: rgb(75, 75, 75);
+            border-radius: 5px;
+        }
+        .profile-option-link:hover {
+            text-decoration: none;
+            color: black;
+        }
+        #orders {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: fit-content;
+            width: fit-content;
+            padding: 0px 20px;
+            margin-left: 40px;
+            margin-right: auto;
+            border-radius: 10px;
+            background-color: white;
+        }
+        #orders-title {
+            display: none;
+            font-size: 36pt;
+            width: fit-content;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #order-list {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+        }
+        .order-card {
+            height: 475px;
+            width: 200px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding-bottom: 20px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(200, 200, 200);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .product-row {
+            display: flex;
+            flex-direction: row;
+        }
+        .item-image {
+            height: 300px;
+            width: inherit;
+            background-color: darkgrey;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+        .item-image img {
+            height: auto;
+            width: inherit;
+            scale: 2;
+            filter: blur(20px);
+            object-fit: cover;
+        }
+        .item-info {
+            padding: 0px 20px;
+        }
+        .item-name {
+            font-size: 12pt;
+            font-weight: bold;
+        }
+        .item-description {
+            height: 35px;
+            overflow-y: scroll;
+        }
+        .item-arrival-date {
+            font-size: 10pt;
+            font-style: italic;
+        }
+        .item-description {
+            font-size: 10pt;
+        }
+    </style>
+</head>
+
 <body>
-    <p>test</p>
+
+    <div id="profile-content">
+        <div id="profile">
+            <div id="profile-greeting">
+                <div id="profile-image">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>            </div>
+                    <p style="margin-left: auto; margin-right: auto;">Hello, <b>User 1</b></p>
+            </div>
+            <div id="profile-options">
+                <div class="profile-option-link-container">
+                    <a class="profile-option-link" href=""><b>Account Information</b></a>
+                    <a class="profile-option-link" href="">View Profile Details</a>
+                    <a class="profile-option-link" href="">View Billing Information</a>
+                    <a class="profile-option-link" href="">Reset Password</a>
+                    <a class="profile-option-link" href="">Notifications</a>
+                </div>
+                <div class="profile-option-link-container">
+                    <a class="profile-option-link" href=""><b>Purchases</b></a>
+                    <a class="profile-option-link" href="">View Transaction History</a>
+                    <a class="profile-option-link" href="">My Credits</a>
+                    <a class="profile-option-link" href="">Refund Policy</a>
+                </div>
+                <div class="profile-option-link-container">
+                    <a class="profile-option-link" href=""><b>Security</b></a>
+                    <a class="profile-option-link" href="">Setup Two-Factor Authentication</a>
+                    <a class="profile-option-link" href="">Setup Recovery Contact</a>
+                    <a class="profile-option-link" href="">My Credits</a>
+                </div>
+                <div class="profile-option-link-container">
+                    <a class="profile-option-link" href=""><b>Customer Service</b></a>
+                    <a class="profile-option-link" href="">Track Package</a>
+                    <a class="profile-option-link" href="">Cancel Order</a>
+                    <a class="profile-option-link" href="">Contact Customer Support</a>
+                </div>
+            </div>
+        </div>
+        <div id="orders">
+            <!-- <p id="orders-title">Your Orders</p> -->
+            <div id="order-list">
+                <div class="product-row">
+                    <div id="product-00" class="order-card">
+                        <div class="item-image" src="">
+                            <img>
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                    <div id="product-01" class="order-card">
+                        <div class="item-image" src="">
+                            <img>
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                    <div id="product-02" class="order-card">
+                        <div class="item-image">
+                            <img src="">
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-row" style="margin-top: 20px;">
+                    <div id="product-10" class="order-card">
+                        <div class="item-image" src="">
+                            <img>
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                    <div id="product-11" class="order-card">
+                        <div class="item-image" src="">
+                            <img>
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                    <div id="product-12" class="order-card">
+                        <div class="item-image">
+                            <img src="">
+                        </div>
+                        <div class="item-info">
+                            <p class="item-name">Product Name</p>
+                            <p class="item-arrival-date">Arriving on 12/25/2023</p>
+                            <p class="item-description">Product Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ex veritatis distinctio nemo aliquid vero hic. Recusandae eum assumenda dolore magni ipsa. Temporibus voluptates corporis ullam quisquam eum recusandae ea.</p>
+                            <p class="item-price">$8.99</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <button style="margin-left: auto; margin-right: auto;" onclick="deleteCartData(1)">Flush User Cart Data</button>
+
+    <script>
+        function deleteCartData(user) {
+            console.log("Reached deleteCartData()");
+            const payload = {
+                userId: 'user' + user + 'Cart'
+            };
+            const url = 'https://www.evlmei.dev:8080/deleteCart';
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                throw error;
+            });
+        }
+        function insertCartData(user, itemId) {
+            console.log("Reached insertCartData()");
+            const payload = {
+                userId: 'user' + user + 'Cart',
+                itemId: itemId
+            };
+            const url = 'https://www.evlmei.dev:8080/addCart';
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                throw error;
+            });
+        }
+        function addItem(productCardButton, productNumber) {
+            const productId = 'product-' + productNumber;
+            const itemInfo = []
+            const itemIdSelector = `#${productId} .item-id`;
+            const itemId = document.querySelector(itemIdSelector).innerHTML;
+            console.log(`${productId} id number is ${itemId}`);
+            if (productCardButton.style.backgroundColor == 'gold') {
+                productCardButton.style.backgroundColor = 'rgb(255, 255, 255)';
+            } else {
+                productCardButton.style.backgroundColor = 'gold';
+                insertCartData(1, itemId);
+            }
+        }
+        function setItemData(divId, itemId, imageURL, itemName, itemDescription, itemPrice) {
+            // const itemIdSelector = `#${divId} .item-id`;
+            console.log(itemName);
+            const itemImageSelector = `#${divId} .item-image img`;
+            const itemNameSelector = `#${divId} .item-info .item-name`;
+            const itemDescriptionSelector = `#${divId} .item-info .item-description`;
+            const itemPriceSelector = `#${divId} .item-info .item-price`;
+            // document.querySelector(itemIdSelector).innerText = itemId;
+            document.querySelector(itemImageSelector).src = imageURL;
+            document.querySelector(itemNameSelector).innerText = itemName;
+            document.querySelector(itemDescriptionSelector).innerText = itemDescription;
+            document.querySelector(itemPriceSelector).innerText = "$" + itemPrice;
+        }
+        function requestData(url, payload) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                throw error;
+            });
+        }
+        function nodeMethod(userId, numOfProductRows, numOfProductColumns) {
+            const numberOfProducts = parseInt(numOfProductRows) * parseInt(numOfProductColumns);
+            const apiUrl = 'https://www.evlmei.dev:8080/retrieveCart';
+            const payload = {
+                userId: userId,
+                numItems: numberOfProducts
+            };
+            requestData(apiUrl, payload)
+                .then(data => {
+                    productData = data;
+                    let indexNum = 0;
+                    for(i = 0; i < numOfProductRows; i++) {
+                        for(j = 0; j < numOfProductColumns; j++) {
+                            setItemData(
+                            `product-${i}${j}`,
+                            data[indexNum][0].productID,
+                            data[indexNum][0].productImage,
+                            data[indexNum][0].productName,
+                            data[indexNum][0].productDescription,
+                            data[indexNum][0].productPrice
+                            );
+                            indexNum++;
+                        } // j-loop
+                    } // i-loop
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        function getProductInfo(userId, numOfProductRows, numOfProductColumns) {
+            console.log(`Attempting to retrieve ${parseInt(numOfProductRows) * parseInt(numOfProductColumns)} product information.`);
+            nodeMethod(userId, numOfProductRows, numOfProductColumns);
+        }
+        window.onload = function() {
+            getProductInfo(1, 3, 3);
+        };
+    </script>
 </body>
+
+<style>
+    .footer-section-container {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 200px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 5% 0px;
+    }
+    .footer-section a {
+        text-decoration: none;
+    }
+    .footer-section-link:hover {
+        color: rgb(20, 20, 20);
+    }
+    .footer-section-title {
+        color: rgb(50,50,50);
+        font-size: 15pt;
+        margin-bottom: 5px;
+    }
+    .footer-section-link {
+        color: rgb(100,100,100);
+        font-size: 10pt;
+        margin-top: -5px;
+        margin-bottom: -10px;
+    }
+</style>
+
+<footer>
+    <div class="footer-section-container">
+        <div class="footer-section" id="footer-section1">
+            <a class="footer-section-title">Shopping Information </a>
+            <a class="footer-section-link" href="">Help</a>
+            <a class="footer-section-link" href="">Track Order</a>
+            <a class="footer-section-link" href="">Return Policy</a>
+        </div>
+        <div class="footer-section" id="footer-section2">
+            <a class="footer-section-title">About Re.Wear</a>
+            <a class="footer-section-link" href="">About Us</a>
+            <a class="footer-section-link" href="">Store Locations</a>
+        </div>
+        <div class="footer-section" id="footer-section3">
+            <a class="footer-section-title">Socials & Contacts</a>
+            <a class="footer-section-link" href="https://www.instagram.com/rewear_company/" target="_blank">Instagram</a>
+            <a class="footer-section-link" href="https://twitter.com/rewear_company" target="_blank">Twitter</a>
+            <a class="footer-section-link" href="https://www.tiktok.com/@rewear_company" target="_blank">TikTok</a>
+            <a class="footer-section-link" href="">Contact Us</a>
+        </div>
+    </div>
+</footer>

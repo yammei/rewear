@@ -1,70 +1,72 @@
 <style>
+    @keyframes inflate {
+        from {
+            width: 0px;
+        }
+        to {
+            width: 350px;
+        }
+    }
+    @keyframes deflate {
+        from {
+            width: 350px;
+        }
+        to {
+            width: 0px;
+        }
+    }
+    body {
+        background-color: rgb(240, 243, 245);
+    }
     #navbar-container {
         display: flex;
         flex-direction: column;
         position: fixed;
-        height: fit-content;
+        height: 80px;
         width: 100%;
-        top: 30px;
+        top: 0;
         margin-left: auto;
         margin-right: auto;
-        padding: 10px;
+        padding: 20px;
         /* background-color: rgba(0,0,0,.8); */
-        background-color: rgba(255, 255, 255, .8);
-        backdrop-filter: blur(5px);
+        background-color: rgba(50, 50, 50, 0.975);
+        /* backdrop-filter: blur(5px); */
         z-index: 9999;
     }
     #navbar-elements {
         display: flex;
         flex-direction: row;
         height: inherit;
-        width: fit-content;
+        width: 90vw;
         margin-left: auto;
         margin-right: auto;
     }
     #logo-container {
-        height: 40px;
-        width: 40px;
-        margin: auto 12px;
+        display: block;
+        height: 37px;
+        width: auto;
+        margin: auto;
     }
     #logo-image {
+        display: block;
         height: inherit;
         width: inherit;
-        border-radius: 100%;
-        background-color: black;
+        /* background-color: black; */
     }
     #search-bar {
-        display: flex;
-        flex-direction: row;
-        width: fit-content;
-        max-width: 650px;
-        margin: auto 10px;
-    }
-    input[type=search] {
+        display: none;
         vertical-align: top;
         font-size: 10pt;
         min-height: 25px;
         height: 25px;
         width: 350px;
-        border-radius: 40px 0px 0px 40px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 40px;
         border: none;
         border-color: gray;
-        background-color: rgba(245, 245, 245, .8);
-    }
-    input[type=submit] {
-        vertical-align: top;
-        font-size: 10pt;
-        color: rgb(50, 50, 50);
-        min-height: 25px;
-        height: 25px;
-        width: 75px;
-        line-height: 5px;
-        border-radius: 0px 40px 40px 0px;
-        border: none;
-        background-color: rgb(235, 235, 235);
-    }
-    input[type=submit]:hover {
-        background-color: rgb(210, 210, 210);
+        background-color: rgba(25, 25, 25, 1);
+        animation: none;
     }
     #links {
         margin: auto 0px;
@@ -74,11 +76,11 @@
         top: 2px;
         font-size: 15pt;
         text-decoration: none;
-        fill: rgb(50, 50, 50);
+        fill: rgb(245, 245, 245);
         margin: auto 12px;
     }
     .navbar-links:hover {
-        fill: rgb(20, 20, 20);
+        fill: rgb(200, 200, 200);
     }
     #navbar-submenu {
         display: flex;
@@ -88,47 +90,267 @@
         margin-right: auto;
         margin-bottom: 0px;
     }
-    #navbar-submenu a {
-        font-size: 10pt;
+    .submenu-links {
+        display: flex;
+        flex-direction: row;
+        height: 20px;
+        width: fit-content;
+        margin: 5px 1px;
+        border: 1px solid rgba(50, 50, 50, 0);
+        border-radius: 10px;
+    }
+    .submenu-links:hover {
         text-decoration: none;
-        color: rgb(50, 50, 50);
-        margin: 5px 20px;
+    }
+    .submenu-link {
+        font-size: 12pt;
+        text-decoration: none;
+        color: rgb(245, 245, 245);
+        height: fit-content;
+        width: fit-content;
+        padding: 10px 15px;
+    }
+    .submenu-link:hover {
+        text-decoration: none;
+        color: rgb(200, 200, 200);
+    }
+    .submenu-container {
+        display: none;
+        height: 300px;
+        width: 700px;
+        padding-top: 30px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 100px;
+        background-color: rgba(50, 50, 50, .975);
+    }
+    .submenu-link:hover + .submenu-container {
+        position: absolute;
+        display: block;
+        top: 125px;
+    }
+    .submenu-container:hover {
+        position: absolute;
+        display: block;
+        top: 125px;
+    }
+    .submenu-links a {
+        font-size: 12pt;
+        text-decoration: none;
+        color: rgb(245, 245, 245);
+    }
+    .submenu-subcategory-title {
+        margin-top: 20px;
+    }
+    .submenu-subcategory-title b {
+        font-size: 15pt;
+    }
+    .submenu-subcategory {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin-top: -10px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .submenu-subcategory a {
+        color: rgb(245, 245, 245);
+    }
+    .submenu-subcategory a:hover {
+        color: rgb(200, 200, 200);
+    }
+    footer.wp-block-template-part {
+        display: none;
+    }
+    #first-icon {
+        width: 110px;
+    }
+    @media (max-width: 600px) {
+        #navbar-elements {
+            width: 85vw;
+        }
+        #logo-container {
+            display: none;
+        }
+        #search-bar {
+            display: block;
+            height: 25px;
+            width: 150px;
+            margin-top: 23px;
+        }
+        #navbar-submenu {
+            display: none;
+        }
+        #first-icon {
+            width: fit-content;
+        }
+        #search-icon-link {
+            display: none;
+        }
+        #profile-icon-link {
+            margin-right: 40px;
+        }
     }
 </style>
 
 <body>
     <div id="navbar-container">
         <div id="navbar-elements">
-            <a class="navbar-links" href="">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1.1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>            
+            <a id="first-icon" class="navbar-links" style="" href="">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
             </a>
             <a id="logo-container" href="https://www.csustanswdev.net/re.wear/">
-                <div id="logo-image"></div>
+                <img id="logo-image" src="https://cdn.discordapp.com/attachments/1043641511746748449/1177894697071550465/rewear-logo-white.png?ex=65742aec&is=6561b5ec&hm=5ffe5e5040205cf10a563506b2d30f193354c81695da96d60e582327d9545eff&">
             </a>
-            <div id="search-bar">[cstmsrch_search]</div>
+            <!-- <div id="search-bar">[cstmsrch_search]</div> -->
+            <input type="text" id="search-bar" placeholder="Search" onkeydown="handleKeyPress(event)">
             <div id="links">
+                <a id="search-icon-link" class="navbar-links">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </a>
                 <a class="navbar-links" href="https://www.csustanswdev.net/re.wear/checkout/">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                 </a>
-                <a class="navbar-links" href="https://www.csustanswdev.net/re.wear/about-us/">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
-                </a>
-                <a class="navbar-links" href="https://www.csustanswdev.net/re.wear/contact/">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                </a>
-                <a class="navbar-links" href="https://www.csustanswdev.net/re.wear/profile/">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                <a id="profile-icon-link" class="navbar-links" href="https://www.csustanswdev.net/re.wear/profile/">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                 </a>
             </div>
         </div> <!-- top section -->
 
         <div id="navbar-submenu">
-            <a href="">Women</a>
-            <a href="">Men</a>
-            <a href="">Children</a>
-            <a href="">Donations</a>
-            <a href="">Credit System</a>
-            <a href="">Store Locations</a>
+
+            <div id="women-submenu" class="submenu-links">
+                <a class="submenu-link" href="">Women</a>
+                <div id="women-submenu-container" class="submenu-container">
+                    <div class="submenu-links">
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>W Tops</b></a>
+                            <a href="">Graphic Tees         </a>
+                            <a href="">Crop Tops            </a>
+                            <a href="">Long Sleeves         </a>
+                            <a class="submenu-subcategory-title" href=""><b>W Bottoms</b></a>
+                            <a href="">Jeans                </a>
+                            <a href="">Pants                </a>
+                            <a href="">Shorts               </a>
+                            <a href="">Skirts               </a>
+                        </div>
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>W Footwear</b></a>
+                            <a href="">Sneakers             </a>
+                            <a href="">Sandals              </a>
+                            <a href="">Boots                </a>
+                            <a class="submenu-subcategory-title" href=""><b>W Undergarments</b></a>
+                            <a href="">Camis                </a>
+                            <a href="">Socks                </a>
+                            <a class="submenu-subcategory-title" href=""><b>W Accessories</b></a>
+                            <a href="">Belts                </a>
+                            <a href="">Bags                 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="men-submenu" class="submenu-links">
+                <a class="submenu-link" href="">Men</a>
+                <div id="men-submenu-container" class="submenu-container">
+                    <div class="submenu-links">
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>M Tops</b></a>
+                            <a href="">Graphic Tees         </a>
+                            <a href="">Crop Tops            </a>
+                            <a href="">Long Sleeves         </a>
+                            <a class="submenu-subcategory-title" href=""><b>M Bottoms</b></a>
+                            <a href="">Jeans                </a>
+                            <a href="">Pants                </a>
+                            <a href="">Shorts               </a>
+                            <a href="">Skirts               </a>
+                        </div>
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>M Footwear</b></a>
+                            <a href="">Sneakers             </a>
+                            <a href="">Sandals              </a>
+                            <a href="">Boots                </a>
+                            <a class="submenu-subcategory-title" href=""><b>M Undergarments</b></a>
+                            <a href="">Camis                </a>
+                            <a href="">Socks                </a>
+                            <a class="submenu-subcategory-title" href=""><b>M Accessories</b></a>
+                            <a href="">Belts                </a>
+                            <a href="">Bags                 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="children-submenu" class="submenu-links">
+                <a class="submenu-link" href="">Children</a>
+                <div id="children-submenu-container" class="submenu-container">
+                    <div class="submenu-links">
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>C Tops</b></a>
+                            <a href="">Graphic Tees         </a>
+                            <a href="">Crop Tops            </a>
+                            <a href="">Long Sleeves         </a>
+                            <a class="submenu-subcategory-title" href=""><b>C Bottoms</b></a>
+                            <a href="">Jeans                </a>
+                            <a href="">Pants                </a>
+                            <a href="">Shorts               </a>
+                            <a href="">Skirts               </a>
+                        </div>
+                        <div class="submenu-subcategory">
+                            <a class="submenu-subcategory-title" href=""><b>C Footwear</b></a>
+                            <a href="">Sneakers             </a>
+                            <a href="">Sandals              </a>
+                            <a href="">Boots                </a>
+                            <a class="submenu-subcategory-title" href=""><b>C Undergarments</b></a>
+                            <a href="">Camis                </a>
+                            <a href="">Socks                </a>
+                            <a class="submenu-subcategory-title" href=""><b>C Accessories</b></a>
+                            <a href="">Belts                </a>
+                            <a href="">Bags                 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="about-submenu" class="submenu-links">
+                <a class="submenu-link" href="https://csustanswdev.net/re.wear/about-us/">About</a>
+            </div>
+
+            <div id="donations-submenu" class="submenu-links">
+                <a class="submenu-link" href="https://csustanswdev.net/re.wear/contact/">Contact</a>
+            </div>
+
+            <div id="login-submenu" class="submenu-links">
+                <a class="submenu-link" href="">Login</a>
+            </div>
+
         </div> <!-- bottom section -->
     </div>
 </body>
+
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchIconLink = document.getElementById('search-icon-link');
+        const searchBar = document.getElementById('search-bar');
+        const logoContainer = document.getElementById('logo-container');
+
+      async function toggleSearchBar() {
+        if (searchBar.style.display === 'none' || searchBar.style.display === '') {
+            searchBar.style.animation = 'inflate .75s ease-in-out';
+            searchBar.style.display = 'block';
+            logoContainer.style.display = 'none';
+        } else {
+            searchBar.style.animation = 'deflate .75s ease-in-out';
+            await sleep(750);
+            searchBar.style.display = 'none';
+            logoContainer.style.display = 'block';
+        }
+      }
+      searchIconLink.addEventListener('click', toggleSearchBar);
+    });
+  </script>

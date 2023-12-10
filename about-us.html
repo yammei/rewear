@@ -1,99 +1,200 @@
-    <head>
-        <style>
-            h2 {
-                display: none;
-            }
-            #about-us-banner {
-                height: 550px;
-                width: 95%;
-                margin-top: 50px;
-                margin-left: auto;
-                margin-right: auto;
-                border-radius: 10px;
-                background-color: lightgray;
-                object-fit: cover;
-                overflow: hidden;
-            }
-            #about-us-banner-image {
-                height: inherit;
-                width: inherit;
-                scale: 1.5;
-            }
-            .profile{
-                display: flex;
-                flex: row;
-                height: fit-content;
-                width: 1000px;
-                margin-top: 50px;
-                margin-bottom: 50px;
-                /* background-color: red; */
-            }
-            .pfp-container {
-                height: 250px;
-                width: 250px;
-                margin-top: auto;
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-bottom: auto;
-            }
-            .pfp-image {
-                height: inherit;
-                width: inherit;
-                border-radius: 100%;
-            }
-            .txt-container {
-                display: flex;
-                flex-direction: column;
-                vertical-align: middle;
-                height: fit-content;
-                margin-top: auto;
-                margin-left: 25px;
-                margin-right: 25px;
-                margin-bottom: auto;
-            }
-            .name {
-                font-size: 30pt;
-                font-weight: 700;
-                color: rgb(25, 25, 25);
-                margin-bottom: 20px;
-            }
-            .description {
-                font-size: 15pt;
-                color: rgb(50, 50, 50);
-                margin-top: 0px;
-            }
+<head>
+    <style>
+        h2 {
+            display: none;
+        }
+        #about-us-content {
+            width: fit-content;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #about-us-banner-title-container {
+            display: none;
+            height: fit-content;
+            width: 1100px;
+            overflow: hidden;
+        }
+        #about-us-banner-title {
+            position: absolute;
+            font-size: 48pt;
+            font-weight: bold;
+            color: rgb(245, 245, 245);
+            height: fit-content;
+            width: fit-content;
+            margin-top: 50px;
+            margin-bottom: -100px;
+        }
+        #about-us-banner {
+            height: 400px;
+            width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            /* background-color: lightgray; */
+            /* border-radius: 10px; */
+            overflow: hidden;
+        }
+        #about-us-banner-image {
+            height: auto;
+            width: inherit;
+            object-fit: cover;
+        }
+        #about-us-profiles {
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .profile {
+            display: flex;
+            flex: row;
+            height: fit-content;
+            width: 1000px;
+            margin: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 50px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .pfp-container {
+            height: 250px;
+            width: 250px;
+            margin-top: auto;
+            margin-left: auto;
+            margin-right: 25px;
+            margin-bottom: auto;
+        }
+        .pfp-image {
+            height: inherit;
+            width: inherit;
+            border-radius: 100%;
+        }
+        .txt-container {
+            display: flex;
+            flex-direction: column;
+            vertical-align: middle;
+            height: fit-content;
+            width: 400px;
+            margin-top: auto;
+            margin-left: 25px;
+            margin-right: auto;
+            margin-bottom: auto;
+        }
+        .name {
+            font-size: 30pt;
+            font-weight: 700;
+            color: rgb(25, 25, 25);
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 15pt;
+            color: rgb(50, 50, 50);
+            margin-top: 0px;
+        }
 
-        </style>
-    </head>
+    </style>
+</head>
 
-    <body>
+<body>
+    <div id="about-us-content">
 
         <div id="about-us-banner">
+            <div id="about-us-banner-title-container">
+                <p id="about-us-banner-title">About the Developers</p>
+            </div>
             <img id="about-us-banner-image" src="https://raw.githubusercontent.com/yammei/yammei.github.io/main/imgs/naragi.png">
         </div>
 
-        <div class="profile">
-            <div class="pfp-container">
-                <img class="pfp-image" src="https://scontent.fsac1-2.fna.fbcdn.net/v/t39.30808-6/351309079_643873574260658_8270152067505435777_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=nLalo4GY7VYAX-RjLv4&_nc_ht=scontent.fsac1-2.fna&oh=00_AfD06pAM43LFa0g-JmdgbN4Rz-KL4lwKznMIs0ZJNOksKg&oe=6550FE27">
-            </div>
-            <div class="txt-container">
-                <p class="name">Mei Zhang</p>
-                <p class="description">
-                    Hi I'm Mei Zhang, Co-founder of <b>Re.Wear</b>. With the recent price inflation of various commodities, buying new clothes in the bay area can become a budget breaking endeavor. Thus, I helped ideate and develop Re.Wear as a platform for trading affordable clothing. 
-                </p>
-            </div>
-        </div>
-        
-        <div class="profile">
-            <div class="txt-container">
-                <p class="name" style="text-align: right;">Esperanza</p>
-                <p class="description" style="text-align: right;">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, ad eius. Hic voluptatem, deleniti rem eum asperiores et, vero repellat repudiandae officiis magni ex, reprehenderit dolores porro maxime libero. Necessitatibus.
-                </p>
-            </div>
-            <div class="pfp-container">
-                <img class="pfp-image" src="https://www.asiamediajournal.com/wp-content/uploads/2022/11/Top-Free-HELLO-KITTY-PFP--300x300.jpg">
-            </div>
-        </div>
+        <!-- <p>
+            With the recent price inflation of various commodities,
+            buying new clothes in the bay area can become a budget breaking endeavor.
+            Thus, the ideation and development of a platform for trading affordable clothing began, <b>re.wear</b>.
+        </p> -->
 
-    </body>
+        <div id="about-us-profiles">
+            <div class="profile">
+                <div class="pfp-container">
+                    <img class="pfp-image" src="https://cdn.discordapp.com/attachments/1043641511746748449/1177901503466455051/404917741_1102971794196656_6022864464326321288_n.png?ex=65743142&is=6561bc42&hm=35486a958a2fefabfddb530ea834595d47d89ba3031a06ca0d6059047800d96c&">
+                </div>
+                <div class="txt-container">
+                    <p class="name">Mei Zhang</p>
+                    <p class="description">
+                        Hi I'm Mei, Co-founder and developer of <b>re.wear</b>. I studied Computer Science at Stanislaus State University. Come check out my side projects as well at <a href="https://github.com/yammei">[Github]</a>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="profile">
+                <div style="margin-left: auto; margin-right: 25px;" class="txt-container">
+                    <p class="name" style="text-align: right;">Esperanza</p>
+                    <p class="description" style="text-align: right;">
+                        Esperanza is a Co-founder and developer of <b>re.wear</b>. She has helped build essential features that enable our platform to function.
+                    </p>
+                </div>
+                <div style="margin-left: 25px; margin-right: auto;" class="pfp-container">
+                    <img class="pfp-image" src="https://cdn.discordapp.com/attachments/1043641511746748449/1178597271571546192/image_1.png?ex=6576b93e&is=6564443e&hm=a6485c74c974c83e99deb10bfc5917e5fd5ff926ae185e29718f80eb70882c8f&">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<style>
+    .footer-section-container {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 200px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 5% 0px;
+    }
+    .footer-section a {
+        text-decoration: none;
+    }
+    .footer-section-link:hover {
+        color: rgb(20, 20, 20);
+    }
+    .footer-section-title {
+        color: rgb(50,50,50);
+        font-size: 15pt;
+        margin-bottom: 5px;
+    }
+    .footer-section-link {
+        color: rgb(100,100,100);
+        font-size: 10pt;
+        margin-top: -5px;
+        margin-bottom: -10px;
+    }
+</style>
+
+<footer>
+    <div class="footer-section-container">
+        <div class="footer-section" id="footer-section1">
+            <a class="footer-section-title">Shopping Information </a>
+            <a class="footer-section-link" href="">Help</a>
+            <a class="footer-section-link" href="">Track Order</a>
+            <a class="footer-section-link" href="">Return Policy</a>
+        </div>
+        <div class="footer-section" id="footer-section2">
+            <a class="footer-section-title">About Re.Wear</a>
+            <a class="footer-section-link" href="">About Us</a>
+            <a class="footer-section-link" href="">Store Locations</a>
+        </div>
+        <div class="footer-section" id="footer-section3">
+            <a class="footer-section-title">Socials & Contacts</a>
+            <a class="footer-section-link" href="https://www.instagram.com/rewear_company/" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer-section-link" href="https://twitter.com/rewear_company" target="_blank" rel="noopener">Twitter</a>
+            <a class="footer-section-link" href="https://www.tiktok.com/@rewear_company" target="_blank" rel="noopener">TikTok</a>
+            <a class="footer-section-link" href="">Contact Us</a>
+        </div>
+    </div>
+</footer>

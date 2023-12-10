@@ -1,39 +1,180 @@
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap">
     <style>
+        h2 {
+            display: none;
+            color: rgb(202, 139, 94);
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                margin-top: -1000px;
+            }
+            to {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                margin-top: -1000px;
+            }
+            to {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes arrowAnimTop {
+            from {
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(-160deg);
+            }
+        }
+        @keyframes arrowAnimBottom {
+            from {
+                opacity: 0;
+                transform: rotate(180deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(20deg);
+            }
+        }
+        @keyframes blurIn {
+            from {
+                filter: brightness(1) blur(5px) hue-rotate(-35deg);
+            }
+            to {
+                filter: brightness(.5) blur(8px) hue-rotate(-35deg);
+            }
+        }
         content {
             display: flex;
             flex-direction: column;
-            width: 1000px;
-            align-items: center;
+            width: 100vw;
             background-color: rgb(250,250,250);
+            margin-left: auto;
+            margin-right: auto;
         }
-        /* #background-image {
-            position: fixed;
+        .section-titles {
+            display: none;
+            position: relative;
+            color: rgb(50, 50, 50);
+            width: fit-content;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: -30px;
+            font-size: 36pt;
+            font-weight: 700;
+        }
+        #ad-banner-section {
+            position: relative;
+            height: 350px;
+            width: 1100px;
+            margin: 60px;
+            margin-bottom: 20px;
+            padding: 0px 20px;
+            border-radius: 0px 0px 10px 10px;
+            /* background-color: red; */
+            overflow: hidden;
+        }
+        #ad-banner-image1 {
+            position: absolute;
             top: 0px;
             left: 0px;
-            height: 100%;
-            width: 100%;
-            scale: 2;
-            background-color: rgb(214, 209, 205);
-            z-index: -1;
-        } */
-        #ad-banner-section {
-            height: 400px;
-            width: 1000px;
-            border-radius: 10px;
-            background-color: lightgray;
+            height: auto;
+            scale: 1.4;
+            filter: brightness(.5) blur(8px) hue-rotate(-35deg);
+            z-index: 0;
+            animation: blurIn 2s ease-in;
+        }
+        #rewear-text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            width: fit-content;
+            margin: auto;
+            margin-top: 50px;
+            z-index: 1;
+        }
+        #rewear-text p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #rewear {
+            display: flex;
+            flex-direction: row;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #re {
+            font-size: 72pt;
+            /* font-weight: bold; */
+            font-family: 'Source Code Pro', monospace;
+            color: rgb(250, 250, 250);
+            opacity: 1;
+            margin-top: 0px;
+            animation: slideDown 2s ease-in-out;
+        }
+        #wear {
+            font-size: 72pt;
+            /* font-weight: bold; */
+            font-family: 'Source Code Pro', monospace;
+            color: rgb(250, 250, 250);
+            opacity: 1;
+            margin-top: 0px;
+            animation: slideUp 2.2s ease-in-out;
+        }
+        #sf {
+            position: absolute;
+            font-size: 20pt;
+            color: rgb(250, 250, 250);
+            opacity: 1;
+            top: 70px;
+            left: 125px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        #rewear-arrow-top {
+            opacity: 1;
+            margin-top: -475px;
+            margin-bottom: -50px;
+            transform: rotate(-160deg);
+            animation: arrowAnimTop 1s ease-in-out;
+        }
+        #rewear-arrow-bottom {
+            opacity: 1;
+            margin-top: -25px;
+            margin-bottom: 0px;
+            transform: rotate(20deg);
+            animation: arrowAnimBottom 1.75s ease-in-out;
         }
         #clothing-category-section {
-            height: fit-content;
-            width: 1000px;
+            height: 180px;
+            width: 1100px;
+            padding: 20px 20px;
             border-radius: 10px;
-            /* background-color: lightgray; */
+            background-color: rgb(255, 255, 255);
         }
         #category-list {
             display: flex;
             flex-direction: row;
-            height: auto;
-            width: auto;
+            height: fit-content;
+            width: fit-content;
             margin: 0px auto;
         }
         .category-element {
@@ -41,29 +182,42 @@
             flex-direction: column;
             align-items: center;
             height: fit-content;
-            width: 200px;
-            margin-top: 50px;
+            width: 250px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: auto;
         }
         .category-element-image-container {
             height: 150px;
-            width: 150px;
-            border-radius: 100%;
+            width: inherit;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .category-element-image-container:hover {
+            scale: 1.05;
+            transition: scale .5s ease-in-out;
         }
         .category-element-image {
-            height: inherit;
+            height: auto;
             width: inherit;
-            border-radius: 100%;
-            background-color: red;
+            margin-top: 0px;
+            scale: 1.2;
+            object-fit: cover;
+            border-radius: 10px;
+            background-color: rgb(199, 142, 142, .2);
+            filter: blur(20px);
         }
         .category-element-name {
-            font-weight: 700;
+            font-size: 12pt;
+            font-weight: normal;
             text-align: center;
             height: fit-content;
             width: fit-content;
-            margin-top: 20px;
+            margin-top: -30px;
         }
         .category-element-description {
-            font-size: 10pt;
+            display: none;
+            font-size: 11pt;
             text-align: center;
             height: fit-content;
             width: fit-content;
@@ -72,44 +226,56 @@
         }
         #recommended-section {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            height: 800px;
-            width: fit-content;
+            height: fit-content;
+            width: 1100px;
             border-radius: 10px;
-            /* background-color: lightgray; */
+            margin-bottom: 0px;
+            padding: 0px 20px;
+            background-color: white;
+        }
+        #recommended-section-content {
+            display: flex;
+            flex-direction: row;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
         #recommended-filters {
             height: 90%;
             width: 175px;
-            margin: auto;
+            margin-bottom: auto;
+            margin-right: auto;
             border-radius: 10px;
-            /* background-color: grey; */
+            /* background-color: red; */
         }
         .filter-element {
             height: fit-content;
             width: 150px;
             margin: 0px auto;
-            margin-bottom: -50px;
+            margin-bottom: 0px;
             padding: 10px;
             /* background-color: lightblue; */
         }
         .filter-element-title {
-            font-size: 10pt;
+            font-size: 12pt;
             font-weight: 700;
-            margin-bottom: 0px;
+            margin-bottom: 5px;
         }
         .toggle-pair {
             display: flex;
             flex-direction: row;
         }
         .toggle-pair input {
-            height: 15px;
-            width: 15px;
+            height: 14px;
+            width: 14px;
             margin: auto 2px;
+            border-width: 1px;
+            border-color: rgb(75, 75, 75);
+            box-shadow: inset 0 1px 1px rgb(150, 150, 150);
         }
         .toggle-pair label {
-            font-size: 10pt;
+            font-size: 12pt;
             margin: auto 2px;
         }
         #color-filter-1,
@@ -117,11 +283,13 @@
             display: flex;
             flex-direction: row;
         }
-        #color-filter-1 input, 
+        #color-filter-1 input,
         #color-filter-2 input {
             margin: 2px 2px;
+            border-width: 1px;
+            border-color: rgb(75, 75, 75);
         }
-        #color-filter-1 input:checked, 
+        #color-filter-1 input:checked,
         #color-filter-2 input:checked {
             border-color: gold;
         }
@@ -129,33 +297,65 @@
             height: fit-content;
             width: fit-content;
             margin-left: auto;
-            margin-right: auto;
             margin-bottom: auto;
             border-radius: 10px;
-            /* background-color: lightgrey; */
         }
         .row {
             display: flex;
             flex-direction: row;
         }
         .item-element {
-            height: fit-content;
+            height: 400px;
             width: 200px;
             margin: 0px 10px;
             padding-bottom: 20px;
-            /* background-color: grey; */
             border-width: 1px;
             border-style: solid;
+            border-radius: 10px;
             border-color: lightgrey;
+            overflow: hidden;
         }
-        .item-element-image-container {
+        .item-image-container {
+            position: relative;
+            display: block;
             height: 250px;
             width: inherit;
+            margin-bottom: 10px;
+            border-radius: 10px 10px 0px 0px;
+            overflow: hidden;
         }
-        .item-element-image {
+        .item-image-container a {
+            display: block;
+            height: 250px;
+            width: 200px;
+        }
+        .item-add {
+            position: absolute;
+            cursor: pointer;
+            fill: rgb(50, 50, 50);
+            opacity: .75;
+            top: 200px;
+            left: 150px;
+            height: 1.25em;
+            width: 1.25em;
+            padding: 7px;
+            z-index: 9998;
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255);
+        }
+        .item-add:hover {
+            fill: rgb(10, 10, 10);
+            background-color: rgb(245, 245, 245);
+        }
+        .item-image {
             height: inherit;
-            width: inherit;
-            background-color: red;
+            width: auto;
+            scale: 1.4;
+            object-fit: cover;
+            border-radius: 10px 10px 0px 0px;
+            background-color: rgb(80, 80, 80);
+            filter: blur(20px);
+            z-index: -1;
         }
         .item-element p {
             height: fit-content;
@@ -168,243 +368,616 @@
         .item-name,
         .item-description,
         .item-price {
-            padding-top: 10px;
-            padding-bottom: 10px;
+            /* padding-top: 5px;
+            padding-bottom: 5px; */
         }
-        .item-name {
+        .item-name  p {
             font-size: 12pt;
             font-weight: 700;
+            height: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* background-color: red; */
         }
-        .item-description {
-            font-size: 10pt;
+        .item-description p {
+            font-size: 12pt;
+            height: 75px;
+            /* background-color: yellow; */
+            overflow-y: scroll;
         }
-        footer {
-            width: fit-content;
-            /* background-color: lightgray; */
+        .item-price {
+            height: fit-content;
+            width: 90%;
+            margin-top: 10px;
             margin-left: auto;
             margin-right: auto;
+            /* background-color: blue; */
         }
-        .footer-section-container {
-            display: flex;
-            flex-direction: row;
+        .item-price p {
+            margin-left: 0px;
         }
-        .footer-section {
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-            width: 200px;
-            margin-left: 50px;
-            margin-right: 50px;
+        .filter-element {
+            margin-bottom: -50px;
         }
-        .footer-section a {
-            text-decoration: none;
+        .wp-block-group alignfull is-layout-constrained wp-block-group-is-layout-constrained {
+            display: none;
         }
-        .footer-section-link:hover {
-            color: rgb(20, 20, 20);
-        }
-        .footer-section-title {
-            color: rgb(50,50,50);
-            font-size: 15pt;
-            margin-bottom: -10px;
-        }
-        .footer-section-link {
-            color: rgb(100,100,100);
-            font-size: 10pt;
-            margin-top: -10px;
-            margin-bottom: -10px;
-        }
+        @media (max-width: 600px) {
+            #ad-banner-section {
+                height: 350px;
+                width: 75vw;
+            }
+            #sf {
+                display: none;
+            }
+            #rewear-arrow-top {
+                margin-top: -500px;
+                margin-left: -150px;
+            }
+            #rewear-arrow-bottom {
+                margin-left: -120px;
+            }
+            #clothing-category-section {
+                height: fit-content;
+                width: 75vw;
+            }
+            #category-list {
+                display: flex;
+                flex-direction: column;
+            }
+            #ce-4 {
+                margin-bottom: -80px;
+            }
+            .category-element {
+                width: 70vw;
+            }
+            #recommended-filters {
+                display: none;
+            }
+            #recommended-section {
+                width: 75vw;
+            }
+            #column-of-rows {
+
+            }
+            .row {
+                display: flex;
+                flex-direction: column;
+            }
+            .item-add {
+                top: 100px;
+                left: 250px;
+            }
+            .item-element {
+                height: 300px;
+                width: 70vw;
+            }
+            .item-image-container {
+                height: 150px;
+                width: inherit;
+            }
+            .item-image-container a {
+                height: 150px;
+                width: 200px;
+            }
+            .item-image {
+                height: 150px;
+                width: 200px;
+                margin-left: 50px;
+                scale: 1.5;
+            }
+    }
     </style>
 </head>
 
 <body>
+
+    <!-- <button onclick="getProductInfo(4, 4)">HTTP Request</button> -->
+
     <content>
 
-        <!-- <div id="background-image">
+        <!-- <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Ad Banner Section</p> -->
 
-        </div> -->
-
-        <!-- <button onclick="insertProductData()">Click me</button> -->
-
-        <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Ad Banner Section</p>
         <div id="ad-banner-section">
+            <div id="rewear-text">
+                <!-- <div id="rewear">
+                    <p id="re">re</p>
+                    <p id="wear">.wear</p>
+                </div> -->
+                <img id="rewear-arrow-top" src="https://cdn.discordapp.com/attachments/1043641511746748449/1178316458594414602/arrow.png?ex=6575b3b7&is=65633eb7&hm=6a6d967f4062704bceeace628e771de655cd7daa3916a1107fb237ce079ca46b&">
+                <p id="sf">San Francisco-based ethrifting.</p>
+                <img id="rewear-arrow-bottom" src="https://cdn.discordapp.com/attachments/1043641511746748449/1178316458594414602/arrow.png?ex=6575b3b7&is=65633eb7&hm=6a6d967f4062704bceeace628e771de655cd7daa3916a1107fb237ce079ca46b&">
+            </div>
+            <!-- <img id="ad-banner-image1" src="https://cdn.discordapp.com/attachments/1043641511746748449/1176329785849426040/SF.gif?ex=656e797c&is=655c047c&hm=6113d38700981e2ea68e1c92ad87a813874f0c5cf84434befcd2b45b11d736ae&"> -->
+            <video id="ad-banner-image1" autoplay loop muted>
+                <source src="https://cdn.discordapp.com/attachments/1043641511746748449/1176327986652393502/SF.mp4?ex=656e77cf&is=655c02cf&hm=fb3972326f1336c8b1b278af994b454abb77ad650f767c0dfd5a3b13537aa04d&" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
-        <p style="width: fit-content; margin: 50px auto; font-size: 25pt; font-weight: 700;">Clothing Category Section</p>
         <div id="clothing-category-section">
+            <p class="section-titles">Shop by Category</p>
             <div id="category-list">
-                <div class="category-element">
-                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
-                        <div class="category-element-image"></div>
-                    </a>                    
-                    <p class="category-element-name">T-Shirts</p>
-                    <p class="category-element-description">Crop Tops, Camis, V-Necks</p>
+                <div id="ce-1" class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank" rel="noopener">
+                        <img class="category-element-image" src="https://i.pinimg.com/736x/fa/e0/07/fae007599713ba6d01ad472376b2294e.jpg">
+                    </a>
+                    <p class="category-element-name">Streetwear</p>
+                    <!-- <p class="category-element-description">Straigth, Baggy, Flared</p> -->
                 </div>
-                <div class="category-element">
-                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
-                        <div class="category-element-image"></div>
-                    </a> 
-                    <p class="category-element-name">Pants</p>
-                    <p class="category-element-description">Straigth, Baggy, Flared</p>
+                <div id="ce-2" class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank" rel="noopener">
+                        <img class="category-element-image" src="https://i.pinimg.com/564x/42/a2/e2/42a2e2c6750faa6b491517446f29e14f.jpg">
+                    </a>
+                    <p class="category-element-name">Formal</p>
+                    <!-- <p class="category-element-description">Shoes, Boots, Heels</p> -->
                 </div>
-                <div class="category-element">
-                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
-                        <div class="category-element-image"></div>
-                    </a>                    
-                    <p class="category-element-name">Footwear</p>
-                    <p class="category-element-description">Shoes, Boots, Heels</p>
+                <div id="ce-3" class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank" rel="noopener">
+                        <img class="category-element-image" src="https://i.pinimg.com/736x/90/49/23/904923b2543aa5c4b2f471225c03ac58.jpg">
+                    </a>
+                    <p class="category-element-name">Minimalistic</p>
+                    <!-- <p class="category-element-description">Socks, Stockings, Underwear</p> -->
                 </div>
-                <div class="category-element">
-                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
-                        <div class="category-element-image"></div>
-                    </a>                    
-                    <p class="category-element-name">Undergarments</p>
-                    <p class="category-element-description">Pajamas, Socks, Underwear</p>
-                </div>
-                <div class="category-element">
-                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank">
-                        <div class="category-element-image"></div>
-                    </a>                    
-                    <p class="category-element-name">Accessories</p>
-                    <p class="category-element-description">Jewelry, Watches, Glasses</p>
+                <div id="ce-4" class="category-element">
+                    <a class="category-element-image-container" href="https://csustanswdev.net/re.wear/" target="_blank" rel="noopener">
+                        <img class="category-element-image" src="https://i.pinimg.com/564x/4c/9f/99/4c9f99864d31ba41a39da65145c0ba47.jpg">
+                    </a>
+                    <p class="category-element-name">Athletic</p>
+                    <!-- <p class="category-element-description">Jewelry, Watches, Glasses</p> -->
                 </div>
             </div>
         </div>
 
-        <p style="width: fit-content; margin: 50px auto; font-size: 25pt;font-weight: 700;">Recommended Section</p>
         <div id="recommended-section">
-
-            <div id="recommended-filters">
-                
-                <div class="filter-element">
-                    <p class="filter-element-title">Filter by Size</p>
-                    <div class="toggle-pair">
-                        <input type="radio" name="size-xs" value="size">
-                        <label for="size-xs">(XS) Extra Small</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="size-s" value="size">
-                        <label for="size-s">(S) Small</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="size-m" value="size">
-                        <label for="size-m">(M) Medium</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="size-l" value="size">
-                        <label for="size-l">(L) Large</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="size-xl" value="size">
-                        <label for="size-xl">(XL) Extra Large</label><br>
-                    </div>
-                </div> <!-- filter by size -->
-
-                <div class="filter-element">
-                    <p class="filter-element-title">Filter by Color</p>
-                    <div id="color-filter-1">
-                        <input type="checkbox" name="red" style="background-color: red;" value="color" title="Red">
-                        <input type="checkbox" name="blue" style="background-color: blue;" value="color" title="Blue">
-                        <input type="checkbox" name="yellow" style="background-color: yellow;" value="color" title="Yellow">
-                        <input type="checkbox" name="green" style="background-color: green;" value="color" title="Green">
-                        <input type="checkbox" name="purple" style="background-color: purple;" value="color" title="Purple">
-                        <input type="checkbox" name="orange" style="background-color: orange;" value="color" title="Orange">
-                    </div>
-                    <div id="color-filter-2">
-                        <input type="checkbox" name="black" style="background-color: black;" value="color" title="Black">
-                        <input type="checkbox" name="dark-grey" style="background-color: darkgrey;" value="color" title="Dark Grey">
-                        <input type="checkbox" name="light-grey" style="background-color: lightgrey;" value="color" title="Light Grey">
-                        <input type="checkbox" name="white" style="background-color: white;" value="color" title="White">
-                        <input type="checkbox" name="brown" style="background-color: brown;" value="color" title="Brown">
-                        <input type="checkbox" name="beige" style="background-color: beige;" value="color" title="Beige">
-                    </div>
-                </div> <!-- filter by color -->
-                
-                <div class="filter-element">
-                    <p class="filter-element-title">Filter by Price</p>
-                    <div class="toggle-pair">
-                        <input type="radio" name="price-option-1" value="size">
-                        <label for="price-option-1">$2.99 - $4.99</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="price-option-2" value="size">
-                        <label for="price-option-2">$4.99 - $6.99</label><br>
-                    </div>
-                    <div class="toggle-pair">
-                        <input type="radio" name="price-option-3" value="size">
-                        <label for="price-option-3">$6.99 - $8.99</label><br>
-                    </div>
-                </div> <!-- filter by price -->
-
-            </div> <!-- filters -->
-
-            <div id="recommended-items">
-                <div id="column-of-rows">
-                    <div class="row">
-                        <div class="item-element">
-                            <a class="item-element-image-container" href="" target="_blank">
-                                <div class="item-element-image"></div>
-                            </a>
-                            <p class="item-name">
-                                Item Name
-                            </p>
-                            <p class="item-description">
-                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
-                            </p>
-                            <p class="item-price">$00.00</p>
-                        </div>  <!-- item element -->
-                        <div class="item-element">
-                            <a class="item-element-image-container" href="" target="_blank">
-                                <div class="item-element-image"></div>
-                            </a>
-                            <p class="item-name">
-                                Item Name
-                            </p>
-                            <p class="item-description">
-                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
-                            </p>
-                            <p class="item-price">$00.00</p>
-                        </div>  <!-- item element -->                        
-                        <div class="item-element">
-                            <a class="item-element-image-container" href="" target="_blank">
-                                <div class="item-element-image"></div>
-                            </a>
-                            <p class="item-name">
-                                Item Name
-                            </p>
-                            <p class="item-description">
-                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
-                            </p>
-                            <p class="item-price">$00.00</p>
-                        </div>  <!-- item element -->                        
-                        <div class="item-element">
-                            <a class="item-element-image-container" href="" target="_blank">
-                                <div class="item-element-image"></div>
-                            </a>
-                            <p class="item-name">
-                                Item Name
-                            </p>
-                            <p class="item-description">
-                                Item Description. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit molestiae nam omnis. Fugit voluptas ut nam laboriosam natus libero porro saepe laudantium debitis, ipsum officiis aperiam nostrum eum fugiat ipsa.
-                            </p>
-                            <p class="item-price">$00.00</p>
-                        </div>  <!-- item element -->
-                    </div>  <!-- row 1 -->
-                </div>   <!-- column of rows -->
-            </div>  <!-- items -->
-
+            <p class="section-titles">Explore New Styles</p>
+            <div id="recommended-section-content">
+                <div id="recommended-filters">
+                    <div class="filter-element">
+                        <p style="margin-top: 0px;" class="filter-element-title">Size</p>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="size-xs" value="size">
+                            <label for="size-xs">Extra Small</label><br>
+                        </div>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="size-s" value="size">
+                            <label for="size-s">Small</label><br>
+                        </div>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="size-m" value="size">
+                            <label for="size-m">Medium</label><br>
+                        </div>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="size-l" value="size">
+                            <label for="size-l">Large</label><br>
+                        </div>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="size-xl" value="size">
+                            <label for="size-xl">Extra Large</label><br>
+                        </div>
+                    </div> <!-- filter by size -->
+                    <div class="filter-element">
+                        <p class="filter-element-title">Color</p>
+                        <div id="color-filter-1">
+                            <input type="checkbox" name="red" style="background-color: rgb(57, 107, 164);" value="color" title="Red">
+                            <input type="checkbox" name="blue" style="background-color: rgb(88, 133, 47);" value="color" title="Blue">
+                            <input type="checkbox" name="yellow" style="background-color: rgb(255, 202, 77);" value="color" title="Yellow">
+                            <input type="checkbox" name="green" style="background-color: rgb(187, 43, 28);" value="color" title="Green">
+                            <input type="checkbox" name="purple" style="background-color: rgb(207, 78, 127);" value="color" title="Purple">
+                            <input type="checkbox" name="orange" style="background-color: rgb(92, 54, 137);" value="color" title="Orange">
+                        </div>
+                        <div id="color-filter-2">
+                            <input type="checkbox" name="black" style="background-color: black;" value="color" title="Black">
+                            <input type="checkbox" name="dark-grey" style="background-color: rgb(68, 68, 68);" value="color" title="Dark Grey">
+                            <input type="checkbox" name="light-grey" style="background-color: rgb(112, 93, 78);" value="color" title="Light Grey">
+                            <input type="checkbox" name="white" style="background-color: rgb(132, 132, 132);" value="color" title="White">
+                            <input type="checkbox" name="brown" style="background-color: rgb(198, 179, 128);" value="color" title="Brown">
+                            <input type="checkbox" name="beige" style="background-color: rgb(255, 255, 255);" value="color" title="Beige">
+                        </div>
+                    </div> <!-- filter by color -->
+                    <div class="filter-element">
+                        <p class="filter-element-title">Price</p>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="price-option-1" value="size">
+                            <label for="price-option-1">$4.99</label><br>
+                        </div>
+                        <div class="toggle-pair">
+                            <input type="checkbox" name="price-option-2" value="size">
+                            <label for="price-option-2">$8.99</label><br>
+                        </div>
+                    </div> <!-- filter by price -->
+                </div> <!-- filters -->
+                <div id="recommended-items">
+                    <div id="column-of-rows">
+                        <div id="row-1" class="row">
+                            <div id="product-00" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '00')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-01" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '01')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-02" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '02')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-03" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '03')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                        </div>  <!-- row 0 -->
+                        <div id="row-2" class="row">
+                            <div id="product-10" class="item-element">
+                            <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '10')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-11" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '11')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-12" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '12')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-13" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '13')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div>
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                        </div>  <!-- row 1 -->
+                        <div id="row-3" class="row">
+                            <div id="product-20" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '20')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-21" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '21')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-22" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '22')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-23" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '23')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                        </div>  <!-- row 2 -->
+                        <div id="row-4" class="row">
+                            <div id="product-30" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '30')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-31" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '31')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-32" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '32')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                            <div id="product-33" class="item-element">
+                                <div class="item-image-container">
+                                    <a href="" target="_blank" rel="noopener">
+                                        <img class="item-image" src="">
+                                    </a>
+                                    <svg class="item-add" onclick="addItem(this, '33')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                </div>
+                                <div class="item-name">         <p>    [Item-Name]         </p></div>
+                                <div class="item-description">  <p>    [Item-Description]  </p></div>
+                                <div class="item-price">        <p>    $00.00              </p></div> 
+                                <div class="item-id" style="display: none;"></div>
+                            </div>  <!-- item element -->
+                        </div>  <!-- row 3 -->
+                    </div>   <!-- column of rows -->
+                </div>  <!-- items -->
+            </div>
         </div> <!-- recommended section -->
-
-        <p style="position: relative; display: inline-block; font-size: 10pt; max-width: 600px; height: fit-content; width: fit-content; margin-top: -200px; left: 25%; padding: 20px; border-width: 1px; border-color: rgb(100, 100, 100);">
-            <span style="font-size: 12pt;">Developer Notes</span>
-            <b>1.</b> JavaScript logic for pop-out menu when menu icon in top-left is clicked.
-            <b>2.</b> Figure out how to post new items from admin page. Use custom product card.
-            <b>3.</b> Look into enabling untoggling for filter inputs.
-            <b>4.</b> Add page number feature below recommended products. 5 pages visible, 2 forward and 2 back.
-            <b>5.</b> Slideshow for ad banner. Allow user to drag/navigate between banners.
-        </p>
-
     </content>
+
+    <script>
+        function insertCartData(user, itemId) {
+            console.log("Reached insertCartData()");
+            const payload = {
+                userId: 'user' + user + 'Cart',
+                itemId: itemId
+            };
+            const url = 'https://www.evlmei.dev:8080/addCart';
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                throw error;
+            });
+        }
+        function addItem(productCardButton, productNumber) {
+            const productId = 'product-' + productNumber;
+            const itemInfo = []
+            const itemIdSelector = `#${productId} .item-id`;
+            const itemId = document.querySelector(itemIdSelector).innerHTML;
+            console.log(`${productId} id number is ${itemId}`);
+            if (productCardButton.style.backgroundColor == 'gold') {
+                productCardButton.style.backgroundColor = 'rgb(255, 255, 255)';
+            } else {
+                productCardButton.style.backgroundColor = 'gold';
+                insertCartData(1, itemId);
+            }
+        }
+        function setItemData(divId, itemId, imageURL, itemName, itemDescription, itemPrice) {
+            const itemIdSelector = `#${divId} .item-id`;
+            const itemImageSelector = `#${divId} .item-image`;
+            const itemNameSelector = `#${divId} .item-name p`;
+            const itemDescriptionSelector = `#${divId} .item-description p`;
+            const itemPriceSelector = `#${divId} .item-price p`;
+            document.querySelector(itemIdSelector).innerText = itemId;
+            document.querySelector(itemImageSelector).src = imageURL;
+            document.querySelector(itemNameSelector).innerText = itemName;
+            document.querySelector(itemDescriptionSelector).innerText = itemDescription;
+            document.querySelector(itemPriceSelector).innerText = "$" + itemPrice;
+        }
+        function requestData(url, payload) {
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                throw error;
+            });
+        }
+        function nodeMethod(numOfProductRows, numOfProductColumns) {
+            const numberOfProducts = parseInt(numOfProductRows) * parseInt(numOfProductColumns);
+            const apiUrl = 'https://www.evlmei.dev:8080/products';
+            const payload = {
+                numberOfProducts: numberOfProducts,
+            };
+            requestData(apiUrl, payload)
+                .then(data => {
+                    productData = data;
+                    let indexNum = 0;
+                    for(i = 0; i < numOfProductRows; i++) {
+                        for(j = 0; j < numOfProductColumns; j++) {
+                            setItemData(
+                            `product-${i}${j}`,
+                            data[indexNum].productID,
+                            data[indexNum].productImage,
+                            data[indexNum].productName,
+                            data[indexNum].productDescription,
+                            data[indexNum].productPrice
+                            );
+                            indexNum++;
+                        } // j-loop
+                    } // i-loop
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        function csvMethod(numOfProductRows, numOfProductColumns) {
+            const numberOfProducts = parseInt(numOfProductRows) * parseInt(numOfProductColumns);
+            const csvUrl = 'https://csustanswdev.net/re.wear/wp-content/uploads/2023/11/wpdb-1.csv';
+            const data = [];
+            fetch(csvUrl)
+            .then(response => response.text())
+            .then(csvData => {
+                const rows = csvData.split('\n');
+                for (let i = 1; i < Math.min(numberOfProducts+1, rows.length); i++) {
+                    data.push(rows[i].split(','));
+                }
+                console.log(data);
+                let indexNum = 0;
+                    for(i = 0; i < numOfProductRows; i++) {
+                        for(j = 0; j < numOfProductColumns; j++) {
+                            setItemData(
+                            `product-${i}${j}`,
+                            data[indexNum][7], // Product Image
+                            data[indexNum][1], // Product Name
+                            data[indexNum][2], // Product Description
+                            data[indexNum][3]  // Product Price
+                            );
+                            indexNum++;
+                        } // j-loop
+                    } // i-loop
+            })
+            .catch(error => console.error('Error fetching or parsing CSV:', error));
+        }
+        function getProductInfo(numOfProductRows, numOfProductColumns) {
+            console.log(`Attempting to retrieve ${parseInt(numOfProductRows) * parseInt(numOfProductColumns)} product information.`);
+            nodeMethod(numOfProductRows, numOfProductColumns);
+            // csvMethod(numOfProductRows, numOfProductColumns);
+        }
+        window.onload = function() {
+            getProductInfo(4, 4);
+        };
+    </script>
+
 </body>
+
+<style>
+    .footer-section-container {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 200px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 5% 0px;
+    }
+    .footer-section a {
+        text-decoration: none;
+    }
+    .footer-section-link:hover {
+        color: rgb(20, 20, 20);
+    }
+    .footer-section-title {
+        color: rgb(50,50,50);
+        font-size: 15pt;
+        margin-bottom: 5px;
+    }
+    .footer-section-link {
+        color: rgb(100,100,100);
+        font-size: 10pt;
+        margin-top: -5px;
+        margin-bottom: -10px;
+    }
+    @media (max-width: 600px) {
+        .footer-section-container {
+            flex-direction: column;
+        }
+        .footer-section {
+            margin-top: 30px;
+        }
+    }
+</style>
+
 <footer>
     <div class="footer-section-container">
         <div class="footer-section" id="footer-section1">
@@ -420,48 +993,10 @@
         </div>
         <div class="footer-section" id="footer-section3">
             <a class="footer-section-title">Socials & Contacts</a>
-            <a class="footer-section-link" href="https://www.instagram.com/rewear_company/" target="_blank">Instagram</a>
-            <a class="footer-section-link" href="https://twitter.com/rewear_company" target="_blank">Twitter</a>
-            <a class="footer-section-link" href="https://www.tiktok.com/@rewear_company" target="_blank">TikTok</a>
+            <a class="footer-section-link" href="https://www.instagram.com/rewear_company/" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer-section-link" href="https://twitter.com/rewear_company" target="_blank" rel="noopener">Twitter</a>
+            <a class="footer-section-link" href="https://www.tiktok.com/@rewear_company" target="_blank" rel="noopener">TikTok</a>
             <a class="footer-section-link" href="">Contact Us</a>
         </div>
     </div>
 </footer>
-<script>
-    function insertProductData()  {
-
-        // Create data object
-        const data = {
-        productID,
-        productName: 'White T-Shirt',
-        productDescription: 'A plain white tee.',
-        productPrice: parseFloat(8.99),
-        productType: 'Shirt',
-        productDate: '05-05-2023',
-        productStock: parseInt(1)
-        };
-
-        // Send HTTP POST request to server
-        try {
-        const response = await fetch('http://73.235.191.83:8080/insert', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        // Handle response
-        if (response.ok) {
-            // Success
-            alert('Form submitted successfully');
-        } else {
-            // Error
-            alert('Error submitting form');
-        }
-        } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while submitting the form');
-        }
-    }
-</script>
